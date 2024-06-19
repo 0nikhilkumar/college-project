@@ -1,0 +1,13 @@
+.actionButtonWrap{
+    composes: actionButtonWrap from '../StepPhoneEmail/StepPhoneEmail.module.css'
+}
+
+.bottomParagraph{
+    composes: bottomParagraph from '../StepPhoneEmail/StepPhoneEmail.module.css'
+}
+
+.paragraph{
+    width: 70%;
+    text-align: center;
+    margin: 20px auto;
+}
