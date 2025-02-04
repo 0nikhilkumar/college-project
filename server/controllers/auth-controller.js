@@ -133,10 +133,14 @@ class AuthController{
         .cookie("accessToken", accessToken, {
           maxAge: 1000 * 60 * 60 * 24 * 30,
           httpOnly: true,
+          secure: true,
+          sameSite: 'none'
         })
         .cookie("refreshToken", refreshToken, {
           maxAge: 1000 * 60 * 60 * 24 * 30,
           httpOnly: true,
+          secure: true,
+          sameSite: 'none'
         })
         .json({ user: userDto, auth: true });
 
