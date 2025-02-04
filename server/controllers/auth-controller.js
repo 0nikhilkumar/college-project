@@ -78,14 +78,14 @@ class AuthController{
         .cookie("accessToken", accessToken, {
           maxAge: 1000 * 60 * 60 * 24 * 30,
           httpOnly: true,
-          secure: process.env.NODE_ENV === 'production', // Set secure only in production
-          sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+          secure: true, // Set secure only in production
+          sameSite: 'none'
         })
         .cookie("refreshToken", refreshToken, {
           maxAge: 1000 * 60 * 60 * 24 * 30,
           httpOnly: true,
-          secure: process.env.NODE_ENV === 'production', // Set secure only in production
-          sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+          secure: true, // Set secure only in production
+          sameSite: 'none'
         })
         .json({ user: userDto, auth: true });
     }
