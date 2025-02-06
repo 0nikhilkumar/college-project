@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -18,6 +19,21 @@ export const logout = ()=> api.post('/api/logout');
 export const createRoom = (data) => api.post("/api/rooms", data);
 export const getAllRooms = ()=> api.get('/api/rooms');
 export const getRoom = (roomId) => api.get(`/api/rooms/${roomId}`);
+
+
+api.interceptors.request.use(
+  (config) => {
+    const accessToken = Cookies.get("accessToken"); // Read token from cookies
+    console.log(accessToken);
+    if (accessToken) {
+      config.headers["Authorization"] = `Bearer ${accessToken}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 // Interceptors
 api.interceptors.response.use(
