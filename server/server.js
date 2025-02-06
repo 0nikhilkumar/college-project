@@ -11,7 +11,7 @@ const server = require('http').createServer(app);
 
 const io = require('socket.io')(server, {
     cors: {
-        origin: process.env.FRONT_URL,
+        origin: [process.env.FRONT_URL, "*"],
         methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         credentials: true,
         allowedHeaders: ["Content-Type", "Authorization"],
@@ -20,7 +20,7 @@ const io = require('socket.io')(server, {
 
 app.use(cookieParser());
 const corsOptions = {
-  origin: process.env.FRONT_URL,
+  origin: [process.env.FRONT_URL, "*"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
