@@ -13,7 +13,7 @@ const RoomCard = ({ room }) => {
         }`}>
         <div className={styles.avatars}>
           {room.speakers.map((speaker) => (
-            <img key={speaker.id} src={speaker.avatar} alt="speaker-avatar" />
+            <img key={speaker.id} src={speaker?.avatar?.replace("http://localhost:5500", import.meta.env.VITE_API_URL)} alt="speaker-avatar" />
           ))}
         </div>
         <div className={styles.names}>

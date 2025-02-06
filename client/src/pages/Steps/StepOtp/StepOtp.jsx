@@ -7,20 +7,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setAuth } from '../../../store/authSlice';
 import TextInput from '../../../components/shared/TextInput/TextInput';
 // import { setUser } from '../../../store/authSlice';
+import { toast } from "react-hot-toast";
 
 
 const StepOtp = ({ onNext }) => {
-  const [otp, setOtp] = useState("");
-  const {phone, hash} = useSelector((state)=> state.auth.otp);
+  const {phone, hash, otp: resOtp} = useSelector((state)=> state.auth.otp);
+  const [otp, setOtp] = useState(resOtp);
   const dispatch = useDispatch();
   async function submit(){
     if(!otp || !hash || !phone) return;
     try {
       const {data} = await verifyOtp({otp, phone, hash});
-      console.log(data);
       dispatch(setAuth(data));
+      toast.success("Otp Verified Successfully")
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      toast.error(error.response.data.message)
     }
   }
   return (

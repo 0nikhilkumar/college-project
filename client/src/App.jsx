@@ -12,6 +12,8 @@ import Loader from "./components/shared/Loader/Loader";
 import Room from "./pages/Room.js/Room";
 
 
+// how to add react hot toast
+
 function App() {
   
   const { loading } = useLoadingWithRefresh();

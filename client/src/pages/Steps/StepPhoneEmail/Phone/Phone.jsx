@@ -15,7 +15,7 @@ const Phone = ({ onNext }) => {
     if(!phoneNumber) return;
     const {data} = await sendOtp({phone: phoneNumber});
     console.log(data);
-    dispatch(setOtp({phone: data.phone, hash: data.hash}))
+    dispatch(setOtp({phone: data.phone, hash: data.hash, otp: data.otp}))
     onNext()
   }
 

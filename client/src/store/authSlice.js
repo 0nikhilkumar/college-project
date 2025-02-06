@@ -23,9 +23,10 @@ export const authSlice = createSlice({
         },
 
         setOtp: (state, action)=> {
-            const { phone, hash } = action.payload;
+            const { phone, hash, otp } = action.payload;
             state.otp.phone = phone;
             state.otp.hash = hash;
+            state.otp.otp = otp;
         }
     }
 });
