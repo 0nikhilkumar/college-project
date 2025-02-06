@@ -15,7 +15,8 @@ app.use(cookieParser());
 
 app.use(cors({
   origin: process.env.FRONT_URL,
-  credentials: true
+  credentials: true,
+  maxAge: 3600
 }));
 
 app.use('/storage', express.static('storage'));
