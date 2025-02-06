@@ -9,31 +9,17 @@ const cookieParser = require("cookie-parser");
 const ACTIONS = require("./actions.js");
 const server = require('http').createServer(app);
 
-const io = require('socket.io')(server, {
-    cors: {
-        origin: [process.env.FRONT_URL, "*"],
-        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        credentials: true,
-        allowedHeaders: ["Content-Type", "Authorization"],
-    },
-});
+const io = require('socket.io')(server);
 
 app.use(cookieParser());
-const corsOptions = {
-  origin: [process.env.FRONT_URL, "*"],
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-}
-app.use(cors(corsOptions));
+
+app.use(cors({
+  origin: process.env.FRONT_URL,
+  credentials: true
+}));
+
 app.use('/storage', express.static('storage'));
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", process.env.FRONT_URL); // Update with your frontend URL
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  next();
-});
+
 
 const PORT = process.env.PORT || 5500;
 DBConnect();
