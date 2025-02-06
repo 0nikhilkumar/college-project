@@ -9,7 +9,13 @@ const cookieParser = require("cookie-parser");
 const ACTIONS = require("./actions.js");
 const server = require('http').createServer(app);
 
-const io = require('socket.io')(server);
+const io = require('socket.io')(server, {
+  cors: {
+    origin: [process.env.FRONT_URL, "http://localhost:5173"],
+    credentials: true,
+    maxAge: 3600
+  }
+});
 
 app.use(cookieParser());
 
