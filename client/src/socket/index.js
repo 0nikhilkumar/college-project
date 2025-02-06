@@ -8,6 +8,6 @@ export const socketInit = ()=> {
       transports: ["websocket"],
     };
 
-    return io("http://localhost:5500", options);
+    return io(import.meta.env.VITE_API_URL, options);
 }
 
