@@ -13,7 +13,6 @@ const io = require('socket.io')(server, {
   cors: {
     origin: [process.env.FRONT_URL, "http://localhost:5173"],
     credentials: true,
-    methods: ['GET', 'POST'],
     maxAge: 3600,
     sameSite: "none"
   }
@@ -24,7 +23,6 @@ app.use(cookieParser());
 app.use(cors({
   origin: [process.env.FRONT_URL, "http://localhost:5173"],
   credentials: true,
-  methods: ['GET', 'POST'],
   maxAge: 3600,
   sameSite: "none"
 }));
