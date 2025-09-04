@@ -79,13 +79,15 @@ class AuthController{
           maxAge: 1000 * 60 * 60 * 24 * 30,
           httpOnly: true,
           secure: true, // Set secure only in production
-          sameSite: 'none'
+          sameSite: 'none',
+          path: '/'
         })
         .cookie("refreshToken", refreshToken, {
           maxAge: 1000 * 60 * 60 * 24 * 30,
           httpOnly: true,
           secure: true, // Set secure only in production
-          sameSite: 'none'
+          sameSite: 'none',
+          path: '/'
         })
         .json({ user: userDto, auth: true });
     }
